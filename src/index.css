@@ -1,0 +1,225 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 120 39% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 73% 57%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 42 100% 50%;
+    --accent-foreground: 0 0% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 120 39% 49%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 120 39% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 73% 57%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 42 100% 50%;
+    --accent-foreground: 0 0% 12%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 120 39% 49%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .food-card-shadow {
+    @apply shadow-lg dark:shadow-none dark:border dark:border-gray-700;
+  }
+  
+  .category-active {
+    @apply bg-elgato text-white dark:bg-green-600;
+  }
+  
+  .app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px; /* Increased to accommodate the larger footer */
+  }
+
+  /* Glass effect for dark mode */
+  .dark .glass-card {
+    @apply bg-gray-800/70 backdrop-blur-md border border-gray-700;
+  }
+  
+  /* Add some card effects for dark mode */
+  .dark .hover-card {
+    @apply transition-all duration-300 hover:bg-gray-800/90 hover:border-green-500/50;
+  }
+
+  /* Add offline storage for PWA */
+  .serviceworker-ready {
+    display: none;
+  }
+}
+
+/* Add PWA specific styling */
+.offline-ready {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+.offline-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #FF9800;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  z-index: 1000;
+}
+
+/* Add some enhanced dark mode styling */
+.dark .food-item {
+  @apply bg-gray-800 border border-gray-700;
+}
+
+.dark .food-card {
+  @apply hover:border-green-500/40 transition-colors;
+}
+
+/* Animation for dark mode toggle */
+.theme-toggle-icon {
+  @apply transition-transform duration-300;
+}
+
+.theme-toggle-icon.animate {
+  @apply rotate-180;
+}
+
+/* Add new animations and styles for mobile interface */
+.shadow-up {
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease forwards;
+}
+
+/* Staggered animations for lists */
+.food-card-stagger-1 { animation-delay: 0.1s; }
+.food-card-stagger-2 { animation-delay: 0.2s; }
+.food-card-stagger-3 { animation-delay: 0.3s; }
+.food-card-stagger-4 { animation-delay: 0.4s; }
+.food-card-stagger-5 { animation-delay: 0.5s; }
+
+/* Enhanced tap feedback for mobile */
+.tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+  @apply active:bg-gray-100 dark:active:bg-gray-700 transition-colors;
+}
+
+/* Pulse animation for special items */
+@keyframes pulse-accent {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse-accent {
+  animation: pulse-accent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Add scale animation for cards */
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105 active:scale-95;
+}
