@@ -13,12 +13,4 @@ npm run
 
 ```
 
-Este projeto contem as seguintes linguagens:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
 ## :P
